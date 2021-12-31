@@ -10,6 +10,9 @@ dependencies {
     implementation 'org.apache.httpcomponents:httpmime:4.5.1'
 }
 
+group 'com.czqr.apktofir.lib'
+version "3.0"
+
 //afterEvaluate {
 //    publishing {
 //        publications {
