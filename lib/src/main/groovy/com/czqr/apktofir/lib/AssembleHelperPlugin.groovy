@@ -10,7 +10,7 @@ import org.gradle.api.Project
  */
 class AssembleHelperPlugin implements Plugin<Project> {
 
-    public static final String EXT_NAME = "kaiUpload";
+    public static final String EXT_NAME = "qxUpload";
 
     @Override
     void apply(Project project) {
