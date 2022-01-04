@@ -2,6 +2,14 @@
 # ApkToFir
 ## 作用：执行一个task实现自动打包，上传到fir，最后通知钉钉。
 
+## 开发环境
+### gradle版本：gradle-6.7.1
+### AGP版本：com.android.tools.build:gradle:4.2.1(这里4.2.0+都可以)
+### AS版本：Android Studio Arctic Fox | 2020.3.1 Patch 3
+
+## 注意
+### 由于AGP7.0API变化较大，暂不支持
+
 ## 使用步骤
 ### 1 在app下的build.gradle中引入插件
 ```groovy
@@ -27,8 +35,8 @@ buildscript {
 
 ### 3 在钉钉群设置 -> 智能群助手 -> 添加自定义webhook机器人
 #### 简单配置机器人
-1 安全设置，自定义关键，填写应用名
-2 Webhook链接中可以获取到dingApiToken
+##### 1 安全设置，自定义关键，填写应用名
+##### 2 Webhook链接中可以获取到dingApiToken
 
 ### 4 在app下的build.gradle中配置插件需要的参数
 ```groovy
@@ -50,6 +58,6 @@ qxUpload {
 ```
 
 ### 5 最后同步下项目，执行task两种方式，任选其一
-#### 打开android studio 右侧gradle面板找到app -> Tasks -> qxUpload -> sendMsgToDingDebug 双击
+#### 打开android studio右侧gradle面板找到app -> Tasks -> qxUpload -> sendMsgToDingDebug 双击
 #### Terminal中输入gradle sendMsgToDingDebug
 
