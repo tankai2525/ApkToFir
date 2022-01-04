@@ -1,3 +1,4 @@
+[![](https://jitpack.io/v/com.gitee.tk_snake/ApkToFir.svg)](https://jitpack.io/#com.gitee.tk_snake/ApkToFir)
 # ApkToFir
 ## 作用：执行一个task实现自动打包，上传到fir，最后通知钉钉。
 
