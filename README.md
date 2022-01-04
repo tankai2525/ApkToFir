@@ -1,5 +1,5 @@
 # ApkToFir
-插件作用：双击一个task实现自动打包，上传到fir,最后通知钉钉。
+## 作用：执行一个task实现自动打包，上传到fir,最后通知钉钉。
 
 ## 使用步骤
 ### 1 在app下的build.gradle中引入插件
@@ -25,7 +25,7 @@ buildscript {
 ```
 
 ### 3 在钉钉群设置 -> 智能群助手 -> 添加自定义webhook机器人
-简单配置机器
+#### 简单配置机器
 1 安全设置，自定义关键，填写应用名
 2 Webhook连接中可以获取到dingApiToken
 
@@ -48,5 +48,7 @@ qxUpload {
 }
 ```
 
-### 5 同步下项目，打开android studio 右侧gradle面板找到app -> Tasks -> qxUpload -> sendMsgToDingDebug 双击
-或者Terminal 输入 gradle sendMsgToDingDebug
+### 5 最后同步下项目，执行task两种方式，任选其一
+#### 打开android studio 右侧gradle面板找到app -> Tasks -> qxUpload -> sendMsgToDingDebug 双击
+#### Terminal中输入gradle sendMsgToDingDebug
+
