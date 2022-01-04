@@ -25,9 +25,9 @@ buildscript {
 ```
 
 ### 3 在钉钉群设置 -> 智能群助手 -> 添加自定义webhook机器人
-#### 简单配置机器
+#### 简单配置机器人
 1 安全设置，自定义关键，填写应用名
-2 Webhook连接中可以获取到dingApiToken
+2 Webhook链接中可以获取到dingApiToken
 
 ### 4 在app下的build.gradle中配置插件需要的参数
 ```groovy
