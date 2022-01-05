@@ -13,6 +13,7 @@
 ## 使用步骤：
 ### 1 在app下的build.gradle中引入插件
 ```groovy
+//apply表示app需要使用com.cz.qx.gradle.fir标识的插件
 apply plugin: 'com.cz.qx.gradle.fir'
 //或者
 plugins {
@@ -22,12 +23,14 @@ plugins {
 
 ### 2 在项目根路径build.gradle中加入
 ```groovy
+//buildscript是设置gradle的依赖和存储库
 buildscript {
     repositories {
+        //com.gitee.tk_snake:ApkToFir:v5.0依赖库从jitpack下载
         maven { url 'https://jitpack.io' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.1'
+        //com.cz.qx.gradle.fir标识的插件在这个依赖库中
         classpath "com.gitee.tk_snake:ApkToFir:v5.0"
     }
 }
