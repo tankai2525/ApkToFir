@@ -1,6 +1,6 @@
 [![](https://jitpack.io/v/com.gitee.tk_snake/ApkToFir.svg)](https://jitpack.io/#com.gitee.tk_snake/ApkToFir)
-# ApkToFir：
-## 作用：执行一个task实现自动打包，上传到fir，最后通知钉钉。
+## 简介：
+### ApkToFir是一个自动打包，然后上传到fir，最后通知钉钉的gradle插件
 
 ## 开发环境：
 ### gradle版本：gradle-6.7.1
@@ -91,6 +91,7 @@ qxUpload {
     }
 }
 ```
+
 ### 5 最后同步下项目，执行task。两种方式，任选其一
 #### 打开android studio右侧gradle面板找到app -> Tasks -> qxUpload -> sendMsgToDingDebug 双击
 #### Terminal中输入gradle sendMsgToDingDebug
