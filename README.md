@@ -56,8 +56,8 @@ qxUpload {
 
 }
 ```
-### 也可把部分配置参数放到ApkToFir.properties(注意要utf-8)文件，避免频繁修改build文件：
-#### ApkToFir.properties 内容：
+#### 也可把部分配置参数放到ApkToFir.properties(注意要utf-8)文件，避免频繁修改build文件：
+##### ApkToFir.properties 内容：
 ```text
 appName = appName
 #每次发包修改changeLog日志
@@ -68,7 +68,7 @@ msgTitle = 安卓发包了
 singleButtonTitle = 点击测试
 singleButtonUrl = fir短链接
 ```
-#### 修改app下的build.gradle中配置插件配置
+##### 修改app下的build.gradle中配置插件配置
 ```groovy
 qxUpload {
     File firFile = rootProject.file('ApkToFir.properties')
