@@ -80,7 +80,7 @@ qxUpload {
             def properties = new Properties()
             properties.load(it)
             iconFilePath = rootProject.projectDir.getAbsolutePath() + "/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
-            appName = properties.getProperty('appName')
+            appName = new String(properties.getProperty('appName').getBytes("ISO8859-1"), "utf-8")
             changeLog = new String(properties.getProperty('changeLog').getBytes("ISO8859-1"), "utf-8")
             firApiToken = properties.getProperty('firApiToken')
             dingApiToken = properties.getProperty('dingApiToken')
