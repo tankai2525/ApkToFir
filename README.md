@@ -1,6 +1,6 @@
 [![](https://jitpack.io/v/com.gitee.tk_snake/ApkToFir.svg)](https://jitpack.io/#com.gitee.tk_snake/ApkToFir)
 ## 简介：
-### ApkToFir是一个自动打包，然后上传到fir，最后通知钉钉的gradle插件
+### ApkToFir是一个自动打包，然后上传到fir，钉钉自动通知并艾特测试人员的gradle插件
 
 ## 开发环境：
 ### gradle版本：gradle-7.2
@@ -26,7 +26,7 @@ plugins {
 //buildscript是设置gradle的依赖和存储库
 buildscript {
     repositories {
-        //com.gitee.tk_snake:ApkToFir:v5.0依赖库从jitpack下载
+        //com.gitee.tk_snake:ApkToFir依赖库从jitpack下载
         maven { url 'https://jitpack.io' }
     }
     dependencies {
@@ -41,7 +41,7 @@ buildscript {
 ##### 1 安全设置，自定义关键，填写应用名
 ##### 2 Webhook链接中可以获取到dingApiToken
 
-### 4 在app下的build.gradle中配置插件需要的参数：
+### 4 在app下的build.gradle中添加扩展对象配置：
 ```groovy
 /*
 使用一键打包插件说明：
@@ -66,10 +66,10 @@ buildscript {
     atPhone = 139999999,13788888888
 
     # 修改日志 比如：测试包 \n\n 1 增加谷歌登录 \n\n 2 增加谷歌支付
-    changeLog = 测试包 \n\n 1 H5通用浮层支持翻倍按钮间隔
+    changeLog = 测试包 \n\n 1 增加谷歌登录 \n\n 2 增加谷歌支付
 
 3 changeLog为更新日志，每次打包前备注修改内容
-4 打开右上角gradle,找app->task->kaiupload->sendMsgToDingDebug 双击，第一次会慢些
+4 打开右上角gradle,找app->task->kaiupload->sendMsgToDingDebug 双击
  */
 qxUpload {
     File firFile = rootProject.file('ApkToFir.properties')
