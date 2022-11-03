@@ -23,6 +23,22 @@ class SendMsgToDingTask extends DefaultTask {
         group "qxUpload"
     }
 
+    BaseVariant getVariant() {
+        return variant
+    }
+
+    void setVariant(BaseVariant variant) {
+        this.variant = variant
+    }
+
+    Project getTargetProject() {
+        return targetProject
+    }
+
+    void setTargetProject(Project targetProject) {
+        this.targetProject = targetProject
+    }
+
     @TaskAction
     def sendToDing() {
         Extension extension = Extension.getConfig(targetProject);

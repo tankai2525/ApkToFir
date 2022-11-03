@@ -18,6 +18,11 @@ class SendMsgToDingAtTask extends DefaultTask {
     @Input
     public Project targetProject;
 
+    void setup() {
+        description "send msg to ding at"
+        group "qxUpload"
+    }
+
     BaseVariant getVariant() {
         return variant
     }
@@ -32,11 +37,6 @@ class SendMsgToDingAtTask extends DefaultTask {
 
     void setTargetProject(Project targetProject) {
         this.targetProject = targetProject
-    }
-
-    void setup() {
-        description "send msg to ding at"
-        group "qxUpload"
     }
 
     @TaskAction
