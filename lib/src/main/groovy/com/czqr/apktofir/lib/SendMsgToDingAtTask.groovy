@@ -8,35 +8,56 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 
 /**
- * 钉钉自动发送消息
+ * 钉钉自动发送消息并@某人
  * 群开放-机器人文档：https://open.dingtalk.com/document/group/custom-robot-access
  */
-class SendMsgToDingTask extends DefaultTask {
+class SendMsgToDingAtTask extends DefaultTask {
 
     @Input
     public BaseVariant variant;
     @Input
     public Project targetProject;
 
+    BaseVariant getVariant() {
+        return variant
+    }
+
+    void setVariant(BaseVariant variant) {
+        this.variant = variant
+    }
+
+    Project getTargetProject() {
+        return targetProject
+    }
+
+    void setTargetProject(Project targetProject) {
+        this.targetProject = targetProject
+    }
+
     void setup() {
-        description "send msg to ding"
+        description "send msg to ding at"
         group "qxUpload"
     }
 
     @TaskAction
     def sendToDing() {
-        Extension extension = Extension.getConfig(targetProject);
-        def map = [actionCard: [title         : extension.msgTitle,
-                                text          : extension.msgContent,
-                                hideAvatar    : 0,
-                                btnOrientation: 0,
-                                singleTitle   : extension.singleButtonTitle,
-                                singleURL     : extension.singleButtonUrl
-                    ],
-                   "msgtype": "actionCard"]
-
+        Extension extension = Extension.getConfig(targetProject)
+        def content = extension.appName + extension.atMsg
+        def phones = extension.atPhone.split(",")
+        for (p in phones) {
+            content += "@" + p
+        }
+        def map = [
+                "msgtype": "text",
+                "text"   : ["content": content],
+                "at"     : [
+                        "atMobiles": phones,
+                        "isAtAll"  : false
+                ]
+        ]
         def requestData = JsonOutput.toJson(map)
         println requestData
+
         def requestUrl = 'https://oapi.dingtalk.com/robot/send?access_token=' + extension.dingApiToken;
         def url = new URL(requestUrl)
         def urlConnection = url.openConnection()

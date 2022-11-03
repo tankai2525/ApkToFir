@@ -3,12 +3,12 @@
 ### ApkToFir是一个自动打包，然后上传到fir，最后通知钉钉的gradle插件
 
 ## 开发环境：
-### gradle版本：gradle-6.7.1
-### AGP版本：com.android.tools.build:gradle:4.2.1(这里4.2.0+都可以)
-### AS版本：Android Studio Arctic Fox | 2020.3.1 Patch 3
+### gradle版本：gradle-7.2
+### AGP版本：com.android.tools.build:gradle:7.1.3
+### AS版本：Android Studio Chipmunk | 2021.2.1 Patch 1
 
 ## 注意：
-### 由于AGP7.0API变化较大，暂不支持
+
 
 ## 使用步骤：
 ### 1 在app下的build.gradle中引入插件
@@ -31,7 +31,7 @@ buildscript {
     }
     dependencies {
         //com.cz.qx.gradle.fir标识的插件在这个依赖库中
-        classpath "com.gitee.tk_snake:ApkToFir:v5.0"
+        classpath "com.gitee.tk_snake:ApkToFir:v7.0"
     }
 }
 ```
@@ -43,51 +43,51 @@ buildscript {
 
 ### 4 在app下的build.gradle中配置插件需要的参数：
 ```groovy
-qxUpload {
-    //fir需要的参数
-    iconFilePath = rootProject.projectDir.getAbsolutePath() + "/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
-    appName = '应用名'
-    changeLog = 'fir提交日志'
-    firApiToken = 'firApiToken'
+/*
+使用一键打包插件说明：
+1 项目根路径创建ApkToFir.properties
+2 把下面内容加到ApkToFir.properties中
+    #项目名,钉钉机器人自定义关键字
+    appName = 项目名
 
-    //钉钉需要的参数
-    dingApiToken = 'dingApiToken'
-    singleButtonTitle = '按钮标题'
-    singleButtonUrl = 'fir短链接'
-    msgTitle = '钉钉会话窗标题'
-    msgContent = appName + "钉钉消息内容" //钉钉文档说关键字必现出现在消息内容中才会正常通知，所以这里拼接应用名
+    #fir上传平台token
+    firApiToken = 你的fir平台token
+    #钉钉机器人token
+    dingApiToken = 你的钉钉机器人token
 
-}
-```
-#### 也可把部分配置参数放到ApkToFir.properties(注意要utf-8)文件，避免频繁修改build文件：
-##### ApkToFir.properties 内容：
-```text
-appName = appName
-#每次发包修改changeLog日志
-changeLog = 测试包 \n\n 1
-firApiToken = 你的firApiToken
-dingApiToken = 你的dingApiToken
-msgTitle = 安卓发包了
-singleButtonTitle = 点击测试
-singleButtonUrl = fir短链接
-```
-##### 修改app下的build.gradle中配置插件配置
-```groovy
+    #钉钉下载通知配置
+    msgTitle = 安卓发包了
+    singleButtonTitle = 点击测试
+    singleButtonUrl = 你的fir平台项目下载地址
+
+    #钉钉@某人配置
+    atMsg = 发包了[送花花][送花花]
+    #钉钉群要艾特人的手机，多人使用逗号隔开
+    atPhone = 139999999,13788888888
+
+    # 修改日志 比如：测试包 \n\n 1 增加谷歌登录 \n\n 2 增加谷歌支付
+    changeLog = 测试包 \n\n 1 H5通用浮层支持翻倍按钮间隔
+
+3 changeLog为更新日志，每次打包前备注修改内容
+4 打开右上角gradle,找app->task->kaiupload->sendMsgToDingDebug 双击，第一次会慢些
+ */
 qxUpload {
     File firFile = rootProject.file('ApkToFir.properties')
     if (firFile && firFile.exists()) {
         firFile.withInputStream {
             def properties = new Properties()
             properties.load(it)
-            iconFilePath = rootProject.projectDir.getAbsolutePath() + "/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
-            appName = new String(properties.getProperty('appName').getBytes("ISO8859-1"), "utf-8")
+            iconFilePath = rootProject.projectDir.getAbsolutePath() + "/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+            appName = properties.getProperty('appName')
             changeLog = new String(properties.getProperty('changeLog').getBytes("ISO8859-1"), "utf-8")
             firApiToken = properties.getProperty('firApiToken')
+            atMsg = new String(properties.getProperty('atMsg').getBytes("ISO8859-1"), "utf-8")
+            atPhone = properties.getProperty('atPhone')
+
             dingApiToken = properties.getProperty('dingApiToken')
             singleButtonTitle = new String(properties.getProperty('singleButtonTitle').getBytes("ISO8859-1"), "utf-8")
             singleButtonUrl = properties.getProperty('singleButtonUrl')
             msgTitle = new String(properties.getProperty('msgTitle').getBytes("ISO8859-1"), "utf-8")
-            //msgContent支持Markdown格式
             msgContent = "### ${appName}安卓v${project.android.defaultConfig.versionName}发布 \n\n 日志：\n\n ${changeLog} \n\n [下载地址](${singleButtonUrl})"
 
         }

@@ -42,11 +42,19 @@ class AssembleHelperPlugin implements Plugin<Project> {
 
                 println "钉钉任务创建完"
 
+                SendMsgToDingAtTask dingAtTask = project.tasks.create("sendMsgToDingAt${variantName}", SendMsgToDingAtTask)
+                dingAtTask.variant = variant
+                dingAtTask.targetProject = project
+                dingAtTask.setup()
+
+                println "钉钉任务@人创建完"
+
                 println variant.getAssembleProvider().get()
                 //dependsOn依赖assemble任务，意思是当我们执行上传任务，gradle会先执行打包任务
                 firUploadTask.dependsOn variant.getAssembleProvider().get();
                 //执行钉钉任务前会先执行上传fir任务
                 dingTask.dependsOn firUploadTask
+                dingAtTask.dependsOn dingTask
 
             }
 

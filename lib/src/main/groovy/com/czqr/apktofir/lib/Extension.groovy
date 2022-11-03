@@ -7,19 +7,24 @@ import org.gradle.api.Project
  */
 class Extension {
 
-    //fir 配置参数
+    //fir 上传配置参数
     String firApiToken
     String appName
     String changeLog
     String iconFilePath
     String filePath
 
-    //ding 配置参数
+    //ding 下载配置参数
     String dingApiToken
     String msgTitle
     String msgContent
     String singleButtonTitle
     String singleButtonUrl
+
+    //ding @通知某人配置
+    String atMsg
+    //手机号码，多人使用英文逗号分隔
+    String atPhone
 
     Extension(Project project) {
     }
