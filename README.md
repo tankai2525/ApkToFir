@@ -7,21 +7,8 @@
 ### AGP版本：com.android.tools.build:gradle:7.1.3
 ### AS版本：Android Studio Chipmunk | 2021.2.1 Patch 1
 
-## 注意：
-
-
 ## 使用步骤：
-### 1 在app下的build.gradle中引入插件
-```groovy
-//apply表示app需要使用com.cz.qx.gradle.fir标识的插件
-apply plugin: 'com.cz.qx.gradle.fir'
-//或者
-plugins {
-    id 'com.cz.qx.gradle.fir'
-}
-```
-
-### 2 在项目根路径build.gradle中加入
+### 1 在项目根路径build.gradle中加入
 ```groovy
 //buildscript是设置gradle的依赖和存储库
 buildscript {
@@ -36,16 +23,18 @@ buildscript {
 }
 ```
 
-### 3 在钉钉群设置 -> 智能群助手 -> 添加自定义webhook机器人：
-#### 简单配置机器人
-##### 1 安全设置，自定义关键，填写应用名
-##### 2 Webhook链接中可以获取到dingApiToken
+### 2 在app下的build.gradle中引入插件
+```groovy
+plugins {
+    id 'com.cz.qx.gradle.fir'
+}
+```
 
-### 4 在app下的build.gradle中添加扩展对象配置：
+### 3 在app下的build.gradle中添加扩展对象配置：
 ```groovy
 /*
 使用一键打包插件说明：
-1 项目根路径创建ApkToFir.properties
+1 项目根路径创建ApkToFir.properties文件
 2 把下面内容加到ApkToFir.properties中
     #项目名,钉钉机器人自定义关键字
     appName = 项目名
@@ -69,7 +58,7 @@ buildscript {
     changeLog = 测试包 \n\n 1 增加谷歌登录 \n\n 2 增加谷歌支付
 
 3 changeLog为更新日志，每次打包前备注修改内容
-4 打开右上角gradle,找app->task->kaiupload->sendMsgToDingDebug 双击
+4 打开右上角gradle，找app->task->qxupload->sendMsgToDingDebug双击
  */
 qxUpload {
     File firFile = rootProject.file('ApkToFir.properties')
@@ -95,7 +84,12 @@ qxUpload {
 }
 ```
 
+### 4 在钉钉群设置 -> 智能群助手 -> 添加自定义webhook机器人：
+#### 简单配置机器人
+##### 1 安全设置，自定义关键，填写应用名
+##### 2 Webhook链接中可以获取到dingApiToken
+
 ### 5 最后同步下项目，执行task。两种方式，任选其一
-#### 打开android studio右侧gradle面板找到app -> Tasks -> qxUpload -> sendMsgToDingDebug 双击
+#### 打开android studio右侧gradle面板找到app -> Tasks -> qxUpload -> sendMsgToDingAtDebug 双击
 #### Terminal中输入gradle sendMsgToDingDebug
 
