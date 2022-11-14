@@ -63,22 +63,20 @@ plugins {
 qxUpload {
     File firFile = rootProject.file('ApkToFir.properties')
     if (firFile && firFile.exists()) {
-        firFile.withInputStream {
+        firFile.withReader('utf-8') {
             def properties = new Properties()
             properties.load(it)
             iconFilePath = rootProject.projectDir.getAbsolutePath() + "/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
             appName = properties.getProperty('appName')
-            changeLog = new String(properties.getProperty('changeLog').getBytes("ISO8859-1"), "utf-8")
-            firApiToken = properties.getProperty('firApiToken')
-            atMsg = new String(properties.getProperty('atMsg').getBytes("ISO8859-1"), "utf-8")
-            atPhone = properties.getProperty('atPhone')
-
             dingApiToken = properties.getProperty('dingApiToken')
-            singleButtonTitle = new String(properties.getProperty('singleButtonTitle').getBytes("ISO8859-1"), "utf-8")
+            firApiToken = properties.getProperty('firApiToken')
+            msgTitle = properties.getProperty('msgTitle')
+            singleButtonTitle = properties.getProperty('singleButtonTitle')
             singleButtonUrl = properties.getProperty('singleButtonUrl')
-            msgTitle = new String(properties.getProperty('msgTitle').getBytes("ISO8859-1"), "utf-8")
+            atMsg = properties.getProperty('atMsg')
+            atPhone = properties.getProperty('atPhone')
+            changeLog = properties.getProperty('changeLog')
             msgContent = "### ${appName}安卓v${project.android.defaultConfig.versionName}发布 \n\n 日志：\n\n ${changeLog} \n\n [下载地址](${singleButtonUrl})"
-
         }
     }
 }
