@@ -1,11 +1,13 @@
 [![](https://jitpack.io/v/com.gitee.tk_snake/ApkToFir.svg)](https://jitpack.io/#com.gitee.tk_snake/ApkToFir)
-## 简介：
-### ApkToFir是一个自动打包，然后上传到fir，钉钉自动通知并艾特测试人员的gradle插件
+# ApkToFir
 
-## 开发环境：
-### gradle版本：gradle-7.2
-### AGP版本：com.android.tools.build:gradle:7.1.3
-### AS版本：Android Studio Chipmunk | 2021.2.1 Patch 1
+ApkToFir是一个自动打包apk，自动上传到fir.im，上传完后钉钉自动在群内通知并艾特指定成员下载测试的gradle插件
+
+
+## 最新版开发环境
+1. gradle版本：gradle-7.2
+2. AGP版本：com.android.tools.build:gradle:7.1.3
+3. AS版本：Android Studio Chipmunk | 2021.2.1 Patch 1
 
 ## 使用步骤：
 ### 1 在项目根路径build.gradle中加入
@@ -82,12 +84,11 @@ qxUpload {
 }
 ```
 
-### 4 在钉钉群设置 -> 智能群助手 -> 添加自定义webhook机器人：
-#### 简单配置机器人
-##### 1 安全设置，自定义关键，填写应用名
-##### 2 Webhook链接中可以获取到dingApiToken
+### 4 配置钉钉机器人：
+1. 在钉钉群设置 -> 智能群助手 -> 添加自定义webhook机器人
+2. 安全设置，自定义关键，填写应用名
+3. Webhook链接中可以获取到dingApiToken
 
-### 5 最后同步下项目，执行task。两种方式，任选其一
-#### 打开android studio右侧gradle面板找到app -> Tasks -> qxUpload -> sendMsgToDingAtDebug 双击
-#### Terminal中输入gradle sendMsgToDingDebug
+### 5 执行打包task
+- 打开android studio右侧gradle面板找到app -> Tasks -> qxUpload -> sendMsgToDingAtDebug 双击
 
