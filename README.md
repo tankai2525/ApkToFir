@@ -34,7 +34,7 @@ plugins {
 ```groovy
 /*
 使用一键打包插件说明：
-1 项目根路径创建ApkToFir.properties文件
+1 项目根路径创建ApkToFir.properties文件，注意编码方式一定是utf-8
 2 把下面内容加到ApkToFir.properties中
     #项目名,钉钉机器人自定义关键字
     appName = 项目名
