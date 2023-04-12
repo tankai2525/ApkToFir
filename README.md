@@ -20,7 +20,7 @@ buildscript {
     }
     dependencies {
         //com.cz.qx.gradle.fir标识的插件在这个依赖库中
-        classpath "com.gitee.tk_snake:ApkToFir:v7.4"
+        classpath "com.gitee.tk_snake:ApkToFir:v7.4.2"
     }
 }
 ```
