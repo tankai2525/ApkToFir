@@ -6,7 +6,7 @@ ApkToFir是一个自动打包apk，自动上传到fir.im，上传完后钉钉自
 
 ## 最新版开发环境
 1. gradle版本：gradle-7.5.1-bin
-2. AGP版本：com.android.tools.build:gradle:7.4.1
+2. AGP版本：com.android.tools.build:gradle:7.4.2
 3. AS版本：Android Studio Electric Eel | 2022.1.1 Patch 2
 
 ## 使用步骤：
