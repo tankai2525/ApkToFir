@@ -5,9 +5,9 @@ ApkToFir是一个自动打包apk，自动上传到fir.im，上传完后钉钉自
 
 
 ## 最新版开发环境
-1. gradle版本：gradle-7.2
-2. AGP版本：com.android.tools.build:gradle:7.1.3
-3. AS版本：Android Studio Chipmunk | 2021.2.1 Patch 1
+1. gradle版本：gradle-7.5.1-bin
+2. AGP版本：com.android.tools.build:gradle:7.4.1
+3. AS版本：Android Studio Electric Eel | 2022.1.1 Patch 2
 
 ## 使用步骤：
 ### 1 在项目根路径build.gradle中加入
@@ -20,7 +20,7 @@ buildscript {
     }
     dependencies {
         //com.cz.qx.gradle.fir标识的插件在这个依赖库中
-        classpath "com.gitee.tk_snake:ApkToFir:v7.1"
+        classpath "com.gitee.tk_snake:ApkToFir:v7.4"
     }
 }
 ```
