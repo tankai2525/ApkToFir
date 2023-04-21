@@ -17,7 +17,7 @@ afterEvaluate {
                 from components.java  //要把源码生成的jar包上传
                 groupId 'com.czqr.apktofir.lib'
                 artifactId "apkToFir"
-                version "7.4.2"
+                version "7.4.2.1"
             }
         }
     }
