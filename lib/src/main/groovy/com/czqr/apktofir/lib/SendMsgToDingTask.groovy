@@ -42,8 +42,11 @@ class SendMsgToDingTask extends DefaultTask {
     @TaskAction
     def sendToDing() {
         Extension extension = Extension.getConfig(targetProject);
+        def text = extension.msgContent
+                .replace(extension.appName, extension.appName + "(" + variant.name + ")")
+                .replaceAll("  ", " \n\n ")
         def map = [actionCard: [title         : extension.msgTitle,
-                                text          : extension.msgContent,
+                                text          : text,
                                 hideAvatar    : 0,
                                 btnOrientation: 0,
                                 singleTitle   : extension.singleButtonTitle,

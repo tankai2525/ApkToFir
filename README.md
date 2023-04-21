@@ -20,7 +20,7 @@ buildscript {
     }
     dependencies {
         //com.cz.qx.gradle.fir标识的插件在这个依赖库中
-        classpath "com.gitee.tk_snake:ApkToFir:v7.4.2"
+        classpath "com.gitee.tk_snake:ApkToFir:v7.4.2.1"
     }
 }
 ```
@@ -56,11 +56,11 @@ plugins {
     #钉钉群要艾特人的手机，多人使用逗号隔开
     atPhone = 139999999,13788888888
 
-    # 修改日志 比如：测试包 \n\n 1 增加谷歌登录 \n\n 2 增加谷歌支付
-    changeLog = 测试包 \n\n 1 增加谷歌登录 \n\n 2 增加谷歌支付
+    # 修改日志 比如：测试包  1 增加谷歌登录  2 增加谷歌支付  两个空格相当于换行
+    changeLog = 测试包  1 增加谷歌登录  2 增加谷歌支付
 
 3 changeLog为更新日志，每次打包前备注修改内容
-4 打开右上角gradle，找app->task->qxupload->sendMsgToDingDebug双击
+4 打开右上角gradle，找app->task->qxupload->sendMsgToDingAtDebug双击
  */
 qxUpload {
     File firFile = rootProject.file('ApkToFir.properties')

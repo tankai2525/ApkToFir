@@ -108,6 +108,7 @@ class FirUploadTask extends DefaultTask {
                     }
                 }
 
+                def text = variant.name + "\n" + extension.changeLog.replaceAll("  ", "\n");
                 //上传apk
                 def http = new HTTPBuilder(firResponseJson.cert.binary.upload_url)
                 http.request(Method.POST) { request ->
@@ -123,7 +124,7 @@ class FirUploadTask extends DefaultTask {
                     }
                     entityBuilder.addPart('x:version', new StringBody(targetProject.android.defaultConfig.versionName))
                     entityBuilder.addPart('x:build', new StringBody(String.valueOf(targetProject.android.defaultConfig.versionCode)))
-                    entityBuilder.addPart('x:changelog', new StringBody(extension.changeLog, ContentType.APPLICATION_JSON))
+                    entityBuilder.addPart('x:changelog', new StringBody(text, ContentType.APPLICATION_JSON))
                     request.entity = entityBuilder.build()
                     response.success = {
                         println "fir apk上传成功"
