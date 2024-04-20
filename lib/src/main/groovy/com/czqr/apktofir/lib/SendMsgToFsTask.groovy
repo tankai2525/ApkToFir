@@ -36,7 +36,7 @@ class SendMsgToFsTask extends DefaultTask {
 
     void setup() {
         description "send msg to fs"
-        group "kaiUpload"
+        group "qxUpload"
     }
 
     @TaskAction

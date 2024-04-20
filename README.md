@@ -20,7 +20,7 @@ buildscript {
     }
     dependencies {
         //com.cz.qx.gradle.fir标识的插件在这个依赖库中
-        classpath "com.gitee.tk_snake:ApkToFir:v7.4.3"
+        classpath "com.gitee.tk_snake:ApkToFir:v7.4.3.1"
     }
 }
 ```
@@ -71,6 +71,7 @@ qxUpload {
             appName = properties.getProperty('appName')
             dingApiToken = properties.getProperty('dingApiToken')
             firApiToken = properties.getProperty('firApiToken')
+            fsApiToken = properties.getProperty('fsApiToken')
             msgTitle = properties.getProperty('msgTitle')
             singleButtonTitle = properties.getProperty('singleButtonTitle')
             singleButtonUrl = properties.getProperty('singleButtonUrl')
