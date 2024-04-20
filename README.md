@@ -1,13 +1,13 @@
 [![](https://jitpack.io/v/com.gitee.tk_snake/ApkToFir.svg)](https://jitpack.io/#com.gitee.tk_snake/ApkToFir)
 # ApkToFir
 
-ApkToFir是一个自动打包apk，自动上传到fir.im，上传完后钉钉自动在群内通知并艾特指定成员下载测试的gradle插件
+ApkToFir是一个自动打包apk，自动上传到fir.im，上传完后在钉钉或飞书群内通知并艾特指定成员下载测试的gradle插件
 
 
 ## 最新版开发环境
 1. gradle版本：gradle-7.5.1-bin
 2. AGP版本：com.android.tools.build:gradle:7.4.2
-3. AS版本：Android Studio Electric Eel | 2022.1.1 Patch 2
+3. AS版本：Android Studio Giraffe | 2022.3.1 Patch 2
 
 ## 使用步骤：
 ### 1 在项目根路径build.gradle中加入
@@ -20,7 +20,7 @@ buildscript {
     }
     dependencies {
         //com.cz.qx.gradle.fir标识的插件在这个依赖库中
-        classpath "com.gitee.tk_snake:ApkToFir:v7.4.2.1"
+        classpath "com.gitee.tk_snake:ApkToFir:v7.4.3"
     }
 }
 ```
@@ -41,10 +41,9 @@ plugins {
     #项目名,钉钉机器人自定义关键字
     appName = 项目名
 
-    #fir上传平台token
     firApiToken = 你的fir平台token
-    #钉钉机器人token
     dingApiToken = 你的钉钉机器人token
+    fsApiToken = 你的飞书机器人token
 
     #钉钉下载通知配置
     msgTitle = 安卓发包了
@@ -56,8 +55,8 @@ plugins {
     #钉钉群要艾特人的手机，多人使用逗号隔开
     atPhone = 139999999,13788888888
 
-    # 修改日志 比如：测试包  1 增加谷歌登录  2 增加谷歌支付  两个空格相当于换行
-    changeLog = 测试包  1 增加谷歌登录  2 增加谷歌支付
+    # 修改日志
+    changeLog = 1 处理问题1  2 处理问题1  两个空格相当于换行
 
 3 changeLog为更新日志，每次打包前备注修改内容
 4 打开右上角gradle，找app->task->qxupload->sendMsgToDingAtDebug双击
@@ -79,6 +78,7 @@ qxUpload {
             atPhone = properties.getProperty('atPhone')
             changeLog = properties.getProperty('changeLog')
             msgContent = "### ${appName}安卓v${project.android.defaultConfig.versionName}发布 \n\n 日志：\n\n ${changeLog} \n\n [下载地址](${singleButtonUrl})"
+            fsContent = "**${appName}安卓v${project.android.defaultConfig.versionName}发布**\n日志：\n${changeLog}\n[下载地址](${singleButtonUrl}) <at id=all></at>"
         }
     }
 }

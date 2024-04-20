@@ -26,6 +26,10 @@ class Extension {
     //手机号码，多人使用英文逗号分隔
     String atPhone
 
+    //飞书 配置参数
+    String fsApiToken;
+    String fsContent
+
     Extension(Project project) {
     }
 
