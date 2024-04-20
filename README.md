@@ -11,6 +11,7 @@ ApkToFir是一个自动打包apk，自动上传到fir.im，上传完后在钉钉
 
 ## 使用步骤：
 ### 1 在项目根路径build.gradle中加入
+#### 7.0+之前
 ```groovy
 //buildscript是设置gradle的依赖和存储库
 buildscript {
@@ -24,6 +25,38 @@ buildscript {
     }
 }
 ```
+#### 7.0+以后
+```groovy
+//项目根路径settings.gradle
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url 'https://jitpack.io' }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+```
+```groovy
+//项目根路径build.gradle
+buildscript {
+    dependencies {
+        classpath 'com.gitee.tk_snake:ApkToFir:v7.4.3.1'
+    }
+}
+
+plugins {
+    id 'com.android.application' version '8.1.2' apply false
+}
+```
+
 
 ### 2 在app下的build.gradle中引入插件
 ```groovy
