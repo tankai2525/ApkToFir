@@ -5,9 +5,9 @@ ApkToFir是一个自动打包apk，自动上传到fir.im，上传完后在钉钉
 
 
 ## 最新版开发环境
-1. gradle版本：gradle-7.5.1-bin
-2. AGP版本：com.android.tools.build:gradle:7.4.2
-3. AS版本：Android Studio Giraffe | 2022.3.1 Patch 2
+1. gradle版本：gradle-8.7.0-bin
+2. AGP版本：com.android.tools.build:gradle:8.7.0
+3. AS版本：Android Studio Koala Feature Drop | 2024.1.2
 
 ## 使用步骤：
 ### 1 在项目根路径build.gradle中加入
@@ -21,7 +21,7 @@ buildscript {
     }
     dependencies {
         //com.cz.qx.gradle.fir标识的插件在这个依赖库中
-        classpath "com.gitee.tk_snake:ApkToFir:v7.4.3.1"
+        classpath "com.gitee.tk_snake:ApkToFir:v8.7.0"
     }
 }
 ```
@@ -48,12 +48,12 @@ dependencyResolutionManagement {
 //项目根路径build.gradle
 buildscript {
     dependencies {
-        classpath 'com.gitee.tk_snake:ApkToFir:v7.4.3.1'
+        classpath 'com.gitee.tk_snake:ApkToFir:v8.7.0'
     }
 }
 
 plugins {
-    id 'com.android.application' version '8.1.2' apply false
+    id 'com.android.application' version '8.6.0' apply false
 }
 ```
 
