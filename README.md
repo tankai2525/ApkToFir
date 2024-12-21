@@ -5,8 +5,8 @@ ApkToFir是一个自动打包apk，自动上传到fir.im，上传完后在钉钉
 
 
 ## 最新版开发环境
-1. gradle版本：gradle-8.7.0-bin
-2. AGP版本：com.android.tools.build:gradle:8.7.0
+1. gradle版本：gradle-8.6.0-bin
+2. AGP版本：com.android.tools.build:gradle:8.6.0
 3. AS版本：Android Studio Koala Feature Drop | 2024.1.2
 
 ## 使用步骤：
